@@ -1,0 +1,38 @@
+{% set version = "1.5.1" %} 
+
+package:
+  name: mistral_common
+  version: {{ version }}
+
+source:
+  url: https://files.pythonhosted.org/packages/be/48/b2acdd507d13a3fd926934eaed0a0afcbcd7e85e90639c91242e7423f3c4/mistral_common-1.5.1-py3-none-any.whl
+
+build:
+  noarch: python
+    # script: python -m pip install --no-deps --ignore-installed .
+
+requirements:
+  host:
+    - python
+    - pip
+  run:
+    - python
+
+test:
+  imports:
+    - mistral_common
+
+about:
+  home: https://github.com/mistralai/mistral-common
+  license: MIT
+  summary: 'A set of tools to help you work with Mistral models.'
+  description: |
+    This package includes tokenization tools that extend beyond basic text-to-token conversion,
+    offering parsing capabilities for structured conversations.
+extra:
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/58810
+    reason: Dependency for vllm
+  recipe-maintainers:
+    - ianaobi
+
